@@ -14,6 +14,7 @@ import MyBookList from '../my-book-list/my-book-list';
 import { createBook, deleteBook, getBooks } from '../../data-access/books';
 import { Book } from '../../model';
 import CreateBook from '../create-book/create-book';
+
 function extractFileId(url: string): string | undefined {
   const regex = /\/d\/([a-zA-Z0-9_-]+)/;
   const match = url.match(regex);
@@ -140,23 +141,35 @@ export function BookCollection() {
 
   return (
     <div>
-      <Box className="p-4 flex flex-row-reverse">
+      <Box className="p-4 flex justify-between items-center">
+        <Typography
+          variant="h6"
+          sx={{
+            fontSize: { xs: 20, sm: 24, md: 30 },
+            paddingLeft: { xs: 0, sm: 5 },
+            paddingTop: { xs: 1, sm: 5 },
+          }}
+        >
+          ชั้นวางหนังสือของคุณ
+        </Typography>
+
         <Button
-          className="!bg-blue-600 !text-white !justify-items-end"
+          className="!bg-blue-600 !text-white !py-2 !px-4 !text-lg !rounded-md"
           variant="contained"
           onClick={handleClickOpen}
         >
-          Add book
+          <span className="hidden sm:block">Add Book</span>
+          <span className="sm:hidden z-10">+</span>
         </Button>
-
-        <CreateBook
-          open={open}
-          onClose={handleClose}
-          onCreate={handleCreateBook}
-        />
       </Box>
 
-      <Box className="p-10 ">
+      <CreateBook
+        open={open}
+        onClose={handleClose}
+        onCreate={handleCreateBook}
+      />
+
+      <Box className="p-[30px]">
         <MyBookList books={books} onDelete={handleOpenDeleteDialog} />
       </Box>
 
@@ -182,6 +195,7 @@ export function BookCollection() {
         </Snackbar>
       )}
 
+      {/* Dialog สำหรับยืนยันการลบ */}
       <Dialog open={openDeleteDialog} onClose={handleCloseDeleteDialog}>
         <DialogTitle>ยืนยันลบหนังสือ</DialogTitle>
         <DialogContent>

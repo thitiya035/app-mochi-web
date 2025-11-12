@@ -50,7 +50,7 @@ const BookCard: React.FC<BookCardProps> = ({ book, onDelete }) => {
               backgroundColor: 'rgba(255, 255, 255, 0.9)',
             },
           }}
-          onClick={() => handleDelete}
+          onClick={handleDelete}
         >
           <DeleteIcon />
         </IconButton>

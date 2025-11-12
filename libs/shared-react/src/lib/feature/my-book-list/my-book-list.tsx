@@ -22,7 +22,11 @@ const MyBookList: React.FC<TableMyBooksProps> = ({ books, onDelete }) => {
   return (
     <div className="flex flex-col gap-4">
       <section className="action-btn flex justify-end">
-        <SelectViewList view={selectedView} onViewChange={handleViewChange} />
+        <SelectViewList
+          view={selectedView}
+          onViewChange={handleViewChange}
+          className="hidden sm:block pb-[30px]"
+        />
       </section>
 
       <div className="list-book grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-6 justify-items-center">
