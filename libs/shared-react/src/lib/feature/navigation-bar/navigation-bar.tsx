@@ -15,7 +15,7 @@ export function NavigationBar() {
         <section className="flex">
           <Typography
             variant="h6"
-            className="hidden sm:block font-bold text-white mr-[50px]"
+            className="hidden sm:block font-bold text-white sm:!mr-[50px]"
           >
             Book Shelf
           </Typography>
