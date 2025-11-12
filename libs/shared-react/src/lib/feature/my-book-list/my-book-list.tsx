@@ -6,9 +6,10 @@ import { useState } from 'react';
 
 interface TableMyBooksProps {
   books: Book[];
+  onDelete: (id: number) => void;
 }
 
-const MyBookList: React.FC<TableMyBooksProps> = ({ books }) => {
+const MyBookList: React.FC<TableMyBooksProps> = ({ books, onDelete }) => {
   const [selectedView, setSelectedView] = useState('module');
 
   const handleViewChange = (
@@ -26,10 +27,16 @@ const MyBookList: React.FC<TableMyBooksProps> = ({ books }) => {
 
       <div className="list-book grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-6 justify-items-center">
         {selectedView === 'module' &&
-          books.map((book, _index) => <BookCard key={book.id} book={book} />)}
+          books.map((book, _index) => (
+            <BookCard key={book.id} book={book} onDelete={onDelete} />
+          ))}
       </div>
 
-      <div>{selectedView === 'list' && <BooksTable books={books} />}</div>
+      <div>
+        {selectedView === 'list' && (
+          <BooksTable books={books} onDelete={onDelete} />
+        )}
+      </div>
     </div>
   );
 };

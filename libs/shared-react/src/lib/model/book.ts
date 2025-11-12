@@ -1,11 +1,11 @@
 export type Book = {
-  id: number;
+  id?: number;
   title: string;
   author: string;
   genre: string;
-  publicationYear: string;
+  publicationYear: number;
   description: string;
-  addressImg: string;
+  addressImg?: string;
 };
 
 export type toggleViewBook = 'list' | 'module';
